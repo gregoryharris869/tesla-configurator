@@ -1,0 +1,13 @@
+---
+import Image from "astro/components/Image.astro";
+import logo from "../images/logo.svg";
+---
+
+<header class="flex justify-between items-center px-10 py-6 mt-16">
+  <Image src={logo} alt="Tesla Logo" width={120} height={24} />
+  <div>
+    <i class="fa-solid fa-globe"></i>
+    <span class="font-bold">US</span>
+  </div>
+</header>
+<main class="flex flex-col md:flex-row"></main>
