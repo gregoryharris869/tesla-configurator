@@ -1,0 +1,26 @@
+/* src/styles/global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-selected {
+    @apply border-2 border-gray-300 rounded-full p-2 transition-transform duration-300 cursor-pointer;
+  }
+
+  .btn-selected:hover {
+    @apply transform scale-100 !important;
+  }
+
+  #top-bar {
+    @apply transition-transform duration-500 ease-in-out;
+  }
+  
+  .visible-bar {
+    @apply transform translate-y-0;
+  }
+  
+  .hidden-bar {
+    @apply transform -translate-y-full;
+  }
+}
