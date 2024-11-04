@@ -1,0 +1,35 @@
+---
+import Image from "astro/components/Image.astro";
+import buttonstealthgrey from "../images/buttonstealthgrey.avif";
+import buttonpearlwhite from "../images/buttonpearlwhite.avif";
+import buttondeepbluemetallic from "../images/buttondeepbluemetallic.avif";
+import buttonsolidblack from "../images/buttonsolidblack.avif";
+import buttonultrared from "../images/buttonultrared.avif";
+import buttonquicksilver from "../images/buttonquicksilver.avif";
+---
+
+<div class="my-8" id="exterior-buttons">
+  <h3 class="font-semibold mb-2">Exterior Color</h3>
+  <div class="flex space-x-4">
+    <button
+      class="btn-selected transition-transform duration-300 hover:scale-110"
+    >
+      <Image src={buttonstealthgrey} alt="Stealth Grey" class="w-22" />
+    </button>
+    <button class="transition-transform duration-300 hover:scale-110">
+      <Image src={buttonpearlwhite} alt="Pearl White" class="w-22" />
+    </button>
+    <button class="transition-transform duration-300 hover:scale-110">
+      <Image src={buttondeepbluemetallic} alt="Deep Blue" class="w-22" />
+    </button>
+    <button class="transition-transform duration-300 hover:scale-110">
+      <Image src={buttonsolidblack} alt="Solid Black" class="w-22" />
+    </button>
+    <button class="transition-transform duration-300 hover:scale-110">
+      <Image src={buttonultrared} alt="Ultra Red" class="w-22" />
+    </button>
+    <button class="transition-transform duration-300 hover:scale-110">
+      <Image src={buttonquicksilver} alt="Quicksilver" class="w-22" />
+    </button>
+  </div>
+</div>

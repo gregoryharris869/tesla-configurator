@@ -1,6 +1,8 @@
 ---
 import Image from "astro/components/Image.astro";
 import logo from "../images/logo.svg";
+import ImageSection from "./image-section.astro";
+import Sidebar from "./sidebar.astro";
 ---
 
 <header class="flex justify-between items-center px-10 py-6 mt-16">
@@ -10,4 +12,7 @@ import logo from "../images/logo.svg";
     <span class="font-bold">US</span>
   </div>
 </header>
-<main class="flex flex-col md:flex-row"></main>
+<main class="flex flex-col md:flex-row justify-between px-4 md:px-10 py-6">
+  <ImageSection />
+  <Sidebar />
+</main>

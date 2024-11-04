@@ -1,0 +1,34 @@
+---
+import Image from "astro/components/Image.astro";
+import modelystealthgrey from "../images/modelystealthgrey.jpg";
+import modelyinteriordark from "../images/modelyinteriordark.jpg";
+---
+
+<section class="w-full md:w-3/4">
+  <div class="sticky top-24">
+    <div
+      class="h-96 bg-gray-200 flex items-center justify-center overflow-hidden mb-4"
+    >
+      <Image
+        src={modelystealthgrey}
+        alt="Tesla Model Y in Stealth Grey color"
+        class="max-w-full h-full transform scale-125 object-cover"
+        id="exterior-image"
+        width={1200}
+        height={675}
+      />
+    </div>
+    <div
+      class="h-96 bg-gray-200 flex items-center justify-center overflow-hidden mb-4"
+    >
+      <Image
+        src={modelyinteriordark}
+        alt="Tesla Model Y interior in dark color"
+        class="max-w-full h-full transform scale-125 object-cover"
+        id="interior-image"
+        width={1200}
+        height={675}
+      />
+    </div>
+  </div>
+</section>
