@@ -3,6 +3,7 @@ const exteriorColorSection = document.getElementById('exterior-buttons');
 const interiorColorSection = document.getElementById('interior-buttons');
 const exteriorImage = document.getElementById('exterior-image');
 const interiorImage = document.getElementById('interior-image');
+const wheelButtonSection = document.getElementById('wheel-buttons');
 
 // Handle scroll
 const handleScroll = () => {
@@ -49,14 +50,27 @@ const handleColorButtonClick = (event) => {
     // Change Interior Image
     if (event.currentTarget === interiorColorSection) {
       const color = button.querySelector("img").alt;
-      interiorImage.src = interiorImages[color];
-      
+      interiorImage.src = interiorImages[color]; 
     }
-
   };
 };
+
+// Wheel Selection
+const handleWheelButtonClick = (event) => {
+  if (event.target.tagName === "BUTTON") {
+    const buttons = document.querySelectorAll("#wheel-buttons button");
+    buttons.forEach((btn) => btn.classList.remove("bg-gray-700", "text-white"));
+    // Add selected styles clicked button
+    event.target.classList.add("bg-gray-700", "text-white");
+    // Selected Wheel
+    const selectedWheel = event.target.textContent.includes("Performance");
+    exteriorImage.src = selectedWheel ? "src/images/modelystealthgreyperformance.jpg" : "src/images/modelystealthgrey.jpg";
+  }
+  
+}
 
 // Add event listener
 window.addEventListener('scroll', () => requestAnimationFrame(handleScroll));
 exteriorColorSection.addEventListener('click', handleColorButtonClick);
 interiorColorSection.addEventListener('click', handleColorButtonClick);
+wheelButtonSection.addEventListener('click', handleWheelButtonClick);
