@@ -1,7 +1,5 @@
 ---
-import Image from "astro/components/Image.astro";
-import buttondark from "../images/buttondark.avif";
-import buttonlight from "../images/buttonlight.avif";
+
 ---
 
 <div class="my-8" id="interior-buttons">
@@ -10,10 +8,10 @@ import buttonlight from "../images/buttonlight.avif";
     <button
       class="btn-selected transition-transform duration-300 hover:scale-110"
     >
-      <Image src={buttondark} alt="Dark" class="w-12" />
+      <img src="../images/button-dark.avif" alt="Dark" class="w-12" />
     </button>
     <button class="transition-transform duration-300 hover:scale-110">
-      <Image src={buttonlight} alt="Light" class="w-12" />
+      <img src="../images/button-light.avif" alt="Light" class="w-12" />
     </button>
   </div>
 </div>

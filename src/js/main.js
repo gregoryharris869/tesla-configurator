@@ -4,6 +4,15 @@ const interiorColorSection = document.getElementById('interior-buttons');
 const exteriorImage = document.getElementById('exterior-image');
 const interiorImage = document.getElementById('interior-image');
 const wheelButtonSection = document.getElementById('wheel-buttons');
+const performanceBtn = document.getElementById('performance-btn');
+
+// Selected Color
+let selectedColor = "Stealth Grey";
+const selectedOptions = {
+  "Performance Wheels" : false,
+  "Performance Package" : false,
+  "Full Self-Driving" : false,
+}
 
 // Handle scroll
 const handleScroll = () => {
@@ -14,17 +23,17 @@ const handleScroll = () => {
 
 // Handle Image Selection
 const exteriorImages = {
-  "Stealth Grey": "src/images/modelystealthgrey.jpg",
-  "Pearl White": "src/images/modelypearlwhite.jpg",
-  "Deep Blue": "src/images/modelydeepbluemetallic.jpg",
-  "Solid Black": "src/images/modelysolidblack.jpg",
-  "Ultra Red": "src/images/modelyultrared.jpg",
-  "Quicksilver": "src/images/modelyquicksilver.jpg",
+  'Stealth Grey': '../images/model-y-stealth-grey.jpg',
+  'Pearl White': '../images/model-y-pearl-white.jpg',
+  'Deep Blue': '../images/model-y-deep-blue-metallic.jpg',
+  'Solid Black': '../images/model-y-solid-black.jpg',
+  'Ultra Red': '../images/model-y-ultra-red.jpg',
+  Quicksilver: '../images/model-y-quicksilver.jpg',
 };
 
 const interiorImages = {
-  Dark: "src/images/modelyinteriordark.jpg",
-  Light: "src/images/modelyinteriorlight.jpg",
+  Dark: '../images/model-y-interior-dark.jpg',
+  Light: '../images/model-y-interior-light.jpg',
 };
 
 
@@ -43,8 +52,8 @@ const handleColorButtonClick = (event) => {
     button.classList.add("btn-selected");
     // Change Exterior Image
     if (event.currentTarget === exteriorColorSection) {
-      const color = button.querySelector("img").alt;
-      exteriorImage.src = exteriorImages[color];
+      selectedColor = button.querySelector("img").alt;
+      updateExteriorImage();
       
     }
     // Change Interior Image
@@ -55,22 +64,45 @@ const handleColorButtonClick = (event) => {
   };
 };
 
+// Update Exterior Image based on color and performance wheels
+const updateExteriorImage = () => {
+  const performanceSuffix = selectedOptions['Performance Wheels']
+    ? '-performance'
+    : '';
+  const colorKey =
+    selectedColor in exteriorImages ? selectedColor : 'Stealth Grey';
+  exteriorImage.src = exteriorImages[colorKey].replace(
+    '.jpg',
+    `${performanceSuffix}.jpg`
+  );
+};
+
+
 // Wheel Selection
 const handleWheelButtonClick = (event) => {
-  if (event.target.tagName === "BUTTON") {
-    const buttons = document.querySelectorAll("#wheel-buttons button");
-    buttons.forEach((btn) => btn.classList.remove("bg-gray-700", "text-white"));
-    // Add selected styles clicked button
-    event.target.classList.add("bg-gray-700", "text-white");
-    // Selected Wheel
-    const selectedWheel = event.target.textContent.includes("Performance");
-    exteriorImage.src = selectedWheel ? "src/images/modelystealthgreyperformance.jpg" : "src/images/modelystealthgrey.jpg";
+  if (event.target.tagName === 'BUTTON') {
+    const buttons = document.querySelectorAll('#wheel-buttons button');
+    buttons.forEach((btn) => btn.classList.remove('bg-gray-700', 'text-white'));
+
+    // Add selected styles to clicked button
+    event.target.classList.add('bg-gray-700', 'text-white');
+
+    selectedOptions['Performance Wheels'] =
+      event.target.textContent.includes('Performance');
+
+    updateExteriorImage();
+   }
   }
-  
-}
+
+
+// Handle Performance Upgrade
+const handlePerformanceButtonClick = () => {
+  const isSelected = performanceBtn.classList.toggle('bg-gray-700');
+  performanceBtn.classList.toggle('text-white');}
 
 // Add event listener
 window.addEventListener('scroll', () => requestAnimationFrame(handleScroll));
 exteriorColorSection.addEventListener('click', handleColorButtonClick);
 interiorColorSection.addEventListener('click', handleColorButtonClick);
 wheelButtonSection.addEventListener('click', handleWheelButtonClick);
+performanceBtn.addEventListener('click', handlePerformanceButtonClick);
